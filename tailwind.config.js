@@ -29,7 +29,6 @@ module.exports = {
         ...colors.violet,
         500: '#7F63F4'
       },
-      main: "#7F63F4",
       tagBlue: "#6B9EFF",
       tagPurple: "#8B6CFF",
       tagPink: "#FF6CA2",
