@@ -123,7 +123,7 @@ const AComponent: React.FC<TabElementProps> = (props) => {
   }
 
   return (
-    <div className="w-full h-full bg-lime-50 hover:bg-lime-300">
+    <div className="w-full h-full bg-blue-50 hover:bg-lime-300">
       A Tab {tabLocation.join("-")}
       <div>
         <button className="block border border-gray-600 border-solid bg-main" onClick={setOpenTargetTab("CURRENT")}>현재 위치</button>
@@ -245,7 +245,7 @@ const Template: ComponentStory<typeof Tabs> = (args) => {
   return (
     <div className="relative w-full h-screen">
       <button 
-        className="absolute top-0 left-0 z-50 w-10 h-10 bg-rose-300"
+        className="absolute top-0 left-0 z-50 w-10 h-10 bg-pink-300"
         onClick={openTab}
       >
         클릭
