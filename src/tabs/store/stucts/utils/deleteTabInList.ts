@@ -40,7 +40,6 @@ function deleteTabInHorizonArea(
 
   const tabVerticalAreaList = tabHorizonArea.verticalAreaList;
   const deletedTabInVerticalAreaList: TabVeticalArea[] = [];
-
   const verticalAreaLength = tabVerticalAreaList.length;
 
   let areaPosition: number | null = null; 
@@ -100,9 +99,7 @@ export function deleteTabInList(
   const targetTabHorizonAreaIdx  = targetTabLocation[0];
   const targetTabVerticalAreaIdx = targetTabLocation[1];
   const targetTabIdx             = targetTabLocation[2];
-
   const deletedTabInHorizonAreaList: TabHorizonArea[] = [];
-
   const tabHorizonAreaListLength =  tabHorizonAreaList.length;
 
   let areaPosition: number | null = null; 

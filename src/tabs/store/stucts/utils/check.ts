@@ -12,18 +12,23 @@ export function checkIfTabExists(
     targetTabVerticalAreaIdx,
     targetTabIdx
   } = getTargetTabLocation(targetTabLocation);
-
   const horizonArea = tabHorizonAreaList[targetTabHorizonAreaIdx];
 
-  if(!horizonArea) return null;
+  if(!horizonArea) {
+    return null;
+  }
 
   const vertialArea = horizonArea.verticalAreaList[targetTabVerticalAreaIdx];
 
-  if(!vertialArea) return null;
+  if(!vertialArea) {
+    return null;
+  }
 
   const tab = vertialArea.tabList[targetTabIdx];
 
-  if(!tab) return null;
+  if(!tab) {
+    return null;
+  }
 
   return tab;
 }
@@ -35,10 +40,9 @@ export function checkValidTargetPosition<T extends TabHorizonArea | TabVeticalAr
   targetAreaPosition: number
 ): boolean {
 
-  const preArea = areaList[targetIdx - 1];
+  const preArea  = areaList[targetIdx - 1];
   const nextArea = areaList[targetIdx + 1];
-
-  const preAreaPosition = preArea? preArea.areaPosition : 0;
+  const preAreaPosition  = preArea? preArea.areaPosition : 0;
   const nextAreaPosition = nextArea? nextArea.areaPosition : contentRect;
 
   if(

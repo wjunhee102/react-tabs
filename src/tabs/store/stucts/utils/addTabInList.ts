@@ -12,12 +12,13 @@ function addTabInVerticalAreaList(
   locatedBehindTarget: boolean
 ) {
   return (verticalArea: TabVeticalArea, verticalIdx: number) => {
-    if(verticalIdx !== targetTabVerticalAreaIdx) return verticalArea;
 
-    const tabList = verticalArea.tabList;
+    if(verticalIdx !== targetTabVerticalAreaIdx) {
+      return verticalArea;
+    }
 
+    const tabList       = verticalArea.tabList;
     const targetTabList = Array.isArray(targetTab)? targetTab : [targetTab];
-
     const [ filteredTargetTabList, tabIndex ] = removeDuplicatesTabList(tabList, targetTabList);
 
     if(!filteredTargetTabList[0]) {
@@ -29,8 +30,7 @@ function addTabInVerticalAreaList(
     const targetTabListLength = filteredTargetTabList.length;
 
     let currentTabIndex: number = verticalArea.currentTabIndex;
-
-    let newTabList: Tab[] = [];
+    let newTabList: Tab[]       = [];
 
     if(!tabList[targetTabIdx]) {
 
@@ -62,11 +62,16 @@ function addTabInHorisionAreaList(
   locatedBehindTarget: boolean
 ) {
   return (horizonArea: TabHorizonArea, horizonIdx: number) => {
-    if(horizonIdx !== targetTabHorizonAreaIdx) return horizonArea;
+    
+    if(horizonIdx !== targetTabHorizonAreaIdx) {
+      return horizonArea;
+    }
 
     if(!horizonArea.verticalAreaList[targetTabVerticalAreaIdx]) {
 
-      if(horizonIdx !== targetTabHorizonAreaIdx) return horizonArea;
+      if(horizonIdx !== targetTabHorizonAreaIdx) {
+        return horizonArea;
+      }
 
       const lastVerticalAreaIdx = horizonArea.verticalAreaList.length - 1;
       
@@ -91,15 +96,13 @@ function addTabInHorisionAreaList(
 
     if(targetTabIdx === undefined) {
 
-      const verticalAreaList = horizonArea.verticalAreaList;
-
-      const newTabVerticalArea = createInsertedAreaPositionInVerticalArea(
+      const verticalAreaList    = horizonArea.verticalAreaList;
+      const newTabVerticalArea  = createInsertedAreaPositionInVerticalArea(
                                     verticalAreaList,
                                     targetTabVerticalAreaIdx,
                                     targetTab,
                                     tabsContentRect.height
                                   );
-
       const newVerticalAreaList = insertAreaInList(verticalAreaList, newTabVerticalArea, targetTabVerticalAreaIdx, locatedBehindTarget);
 
       return updateObject(horizonArea, { verticalAreaList: newVerticalAreaList });
@@ -141,26 +144,24 @@ export function addTabInList(
   if(!tabHorizonAreaList[targetTabHorizonAreaIdx]) {
 
     const lastHorizonAreaIdx = tabHorizonAreaList.length - 1;
-
-    const newTabHorizonArea = createInsertedAreaPositionInHorizonArea(
-                                tabHorizonAreaList,
-                                lastHorizonAreaIdx,
-                                targetTab,
-                                tabsContentRect.width
-                              );
+    const newTabHorizonArea  = createInsertedAreaPositionInHorizonArea(
+                                 tabHorizonAreaList,
+                                 lastHorizonAreaIdx,
+                                 targetTab,
+                                 tabsContentRect.width
+                               );
 
     return [...tabHorizonAreaList, newTabHorizonArea];
   }
 
   if(targetTabVerticalAreaIdx === undefined) {
 
-    const newTabHorizonArea = createInsertedAreaPositionInHorizonArea(
-                                tabHorizonAreaList,
-                                targetTabHorizonAreaIdx,
-                                targetTab,
-                                tabsContentRect.width
-                              );
-
+    const newTabHorizonArea     = createInsertedAreaPositionInHorizonArea(
+                                    tabHorizonAreaList,
+                                    targetTabHorizonAreaIdx,
+                                    targetTab,
+                                    tabsContentRect.width
+                                  );
     const newTabHorizonAreaList = insertAreaInList(
                                     tabHorizonAreaList, 
                                     newTabHorizonArea, 
