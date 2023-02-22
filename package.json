@@ -1,9 +1,11 @@
 {
-  "name": "@wjunhee102/react-tab",
+  "name": "@wjunhee102/react-tabs",
   "version": "0.0.1",
   "description": "리액트 라이브러리입니다.",
   "scripts": {
     "rollup": "rollup -c --bundleConfigAsCjs",
+    "predeploy": "npm run rollup",
+    "deploy": "npm run publish",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
