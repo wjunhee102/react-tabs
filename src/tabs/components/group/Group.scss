@@ -1,0 +1,95 @@
+.tana-group {
+  @apply flex flex-row h-auto w-auto;
+
+  &.widthFill {
+    @apply w-full;
+  }
+
+  &.heightFill {
+    @apply h-full;
+  }
+
+  &.childrenFill {
+    
+    &.widthFill > :nth-child(n) {
+      @apply w-full;
+    } 
+
+    &.heightFill > :nth-child(n) {
+      @apply h-full;
+    }
+
+  }
+
+  &.hidden {
+    display: none;
+  }
+
+  &.flex-gap {
+    & > :nth-child(n) {
+      @apply mr-2;
+    }
+  }
+
+  &.flex-gap-1 {
+    & > :nth-child(n) {
+      @apply mr-1;
+    }
+  }
+
+  &.flex-gap-4 {
+    & > :nth-child(n) {
+      @apply mr-4;
+    }
+  }
+
+  &.flex-gap-6 {
+    & > :nth-child(n) {
+      @apply mr-6;
+    }
+  }
+
+  &.flex-gap-0 {
+    & > :nth-child(n) {
+      @apply mr-0;
+    }
+  }
+
+  &.vertical {
+    @apply flex-col;
+
+    &.flex-gap {
+      & > :nth-child(n) {
+        @apply mr-0 mb-2;
+      }
+    }
+
+    &.flex-gap-1 {
+      & > :nth-child(n) {
+        @apply mr-0 mb-1;
+      }
+    }
+  
+    &.flex-gap-4 {
+      & > :nth-child(n) {
+        @apply mr-0 mb-4;
+      }
+    }
+  
+    &.flex-gap-6 {
+      & > :nth-child(n) {
+        @apply mr-0 mb-6;
+      }
+    }
+
+    &.flex-gap-none {
+      & > :nth-child(n) {
+        @apply mr-0 mb-0;
+      }
+    }
+  }
+
+  & > :last-child {
+    margin: 0px !important;
+  }
+}

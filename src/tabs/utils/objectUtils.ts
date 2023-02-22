@@ -1,0 +1,17 @@
+export function updateObject<T extends object>(oldObject: T, ...newValues: { [P in keyof T]?: T[P] }[]): T {
+  return Object.assign({}, oldObject, ...newValues);
+};
+
+export function modifyAnObject<T extends Object>(object: T, propertys: { [P in keyof T]?: T[P] }) {
+  const newObject = updateObject(object);
+
+  for(const key in propertys) {
+    if(newObject.hasOwnProperty(key)) {
+      newObject[key as keyof typeof newObject] = propertys[key as keyof typeof propertys] as any;
+
+      if(!newObject[key as keyof typeof newObject]) delete newObject[key as keyof typeof newObject];
+    }
+  }
+
+  return newObject;
+}
